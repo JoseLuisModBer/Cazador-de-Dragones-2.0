@@ -1,0 +1,437 @@
+/******************
+*** TIPOGRAFÍAS ***
+******************/
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/*************
+*** TEXTOS ***
+*************/
+h1,
+h2,
+#text,
+button,
+.stat,
+p,
+li,
+a {
+  /* font-family: 'Lobster', sans-serif; */
+  font-family: 'Comic Neue', 'Shantell Sans', sans-serif;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+#instructionsPanel > h2 {
+  text-decoration: underline;
+}
+
+#logrosDesbloqueados > h2 {
+  margin: 1rem;
+}
+
+.stat,
+button,
+#text,
+p,
+li,
+a {
+  font-size: 20px;
+}
+
+button {
+  font-weight: bold;
+}
+
+.noSeSepara {
+  white-space: nowrap;
+}
+
+/*************
+*** HEADER ***
+*************/
+
+#logo-cazador-de-dragones {
+  width: 50%;
+}
+
+/************************
+*** POPUP INFORMATIVO ***
+************************/
+#custom-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border: 8px solid #a64134;
+}
+
+#custom-popup > .custom-popup-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#popup-image {
+  max-width: 300px;
+}
+
+/****************************
+*** ARREGLO INSTRUCCIONES ***
+****************************/
+.doNotShow {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+#instructionsPanel {
+  color: #000;
+  padding: 0px 1rem;
+}
+
+#instructionsPanel > p {
+  font-weight: bold;
+}
+
+/**************
+*** ESTILOS ***
+**************/
+body {
+  background-color: #0a0a23;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+header > img {
+  width: 50%;
+  padding-top: 2rem;
+}
+
+#contenedor-fotoytexto {
+  background-color: #0a0a23;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#fotoLocalizacionEnTexto {
+  margin-bottom: 1rem;
+  max-width: 200px;
+}
+
+#text {
+  color: #ffffff;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#game {
+  max-width: 1400px;
+  width: 1400px;
+  background-color: #d8d6d6;
+  color: #ffffff;
+  margin: 30px 1.5rem 0px 1.5rem;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#game > #stats,
+#game > #controls {
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+
+#controls,
+#stats {
+  border: 1px solid #0a0a23;
+  padding: 10px;
+  color: #0a0a23;
+}
+
+#stats {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.stats-A,
+.stats-B,
+.stats-C {
+  display: flex;
+  /*   flex-direction: column; */
+  gap: 0.5rem;
+}
+
+.stats-C {
+  margin-left: 1rem;
+}
+
+#fotoArmaActual {
+  width: 30%;
+}
+
+#controls {
+  display: flex;
+  gap: 1rem;
+}
+
+#monsterStats {
+  display: none;
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #ffffff;
+  background-color: #a64134;
+}
+
+.stat {
+  padding-right: 10px;
+  display: flex;
+}
+
+button {
+  cursor: pointer;
+  color: #0a0a23;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #a64134;
+  border-radius: 5px;
+  box-shadow: 0px 0px 0px #000;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+#button1 {
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #fe3232;
+}
+#button2 {
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #68fe32;
+}
+#button3 {
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #3291fe;
+}
+
+button:hover {
+  box-shadow: 2px 2px 5px #000;
+}
+
+.notButtonActive {
+  background-color: #32eafe;
+  background-image: linear-gradient(#32eafe, #32a9fe);
+  border: 3px solid #32eafe;
+  font-size: 18px;
+}
+
+.buttonActive {
+  background-color: #32eafe;
+  background-image: linear-gradient(#93f2fd, #9ad4fd);
+  border: 3px solid #32eafe;
+  font-size: 18px;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}
+
+#logrosDesbloqueados {
+  max-width: 1400px;
+  width: 1400px;
+  background-color: #d8d6d6;
+  color: #000;
+  margin: 30px 1.5rem 0px 1.5rem;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.ul-de-logros > li:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.palabra-secreta {
+  color: #c70d0d;
+}
+
+.contenedor-boton-borrarlocalstorage {
+  display: flex;
+  justify-content: center;
+}
+
+/*
+############
+## FOOTER ##
+############
+*/
+/*Damos un padding al footer y lo centramos usando grid con place-content que sirve para centrar tanto en el eje vertical como en el horizontal (porque en este caso el footer solo tiene un elemento que ocupa toda una zelda)*/
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--azulOscuro);
+}
+
+footer > p,
+footer > p > a {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+/*#####################################################################*/
+
+/*
+#############################
+#### MEDIA QUERY: 700px #####
+#############################
+*/
+
+@media (max-width: 1500px) {
+  #game,
+  #logrosDesbloqueados {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1100px) {
+  #game,
+  #logrosDesbloqueados {
+    width: 800px;
+  }
+
+  #stats {
+    gap: 2rem;
+  }
+
+  .stats-A,
+  .stats-B {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .stat,
+  button,
+  #text,
+  p,
+  li {
+    font-size: 18px;
+  }
+
+  #game,
+  #logrosDesbloqueados {
+    width: 700px;
+  }
+}
+
+@media (max-width: 800px) {
+  #game,
+  #logrosDesbloqueados {
+    width: 600px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  #game,
+  #logrosDesbloqueados {
+    width: 500px;
+  }
+
+  #fotoArmaActual {
+    width: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  #game,
+  #logrosDesbloqueados {
+    width: 400px;
+  }
+
+  .stat,
+  button,
+  #text,
+  p,
+  li {
+    font-size: 16px;
+  }
+
+  #instructionsButton {
+    font-size: 16px;
+  }
+
+  #controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #fotoArmaActual {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  #game,
+  #logrosDesbloqueados {
+    width: 375px;
+  }
+
+  #stats {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #logo-cazador-de-dragones {
+    width: 90%;
+  }
+
+  #game,
+  #logrosDesbloqueados {
+    width: 300px;
+  }
+
+  #stats {
+    gap: 0.5rem;
+  }
+
+  #fotoArmaActual {
+    width: 40px;
+  }
+}
+
+@media (max-width: 330px) {
+  #game,
+  #logrosDesbloqueados {
+    width: 280px;
+  }
+}
