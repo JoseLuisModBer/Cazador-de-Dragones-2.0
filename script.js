@@ -106,7 +106,7 @@ const locations = [
     name: 'ganar',
     'button text': ['REJUGAR?', 'REJUGAR?', 'REJUGAR?'],
     'button functions': [restart, restart, restart],
-    text: '¡Has vencido al malvado dragón!\n\n Los aldeanos no se lo pueden creer. Al final tú, el jóven discípulo del gran guerrero ModBer has dado la talla, demostrando tu valía, valentía y honor.\n\n El pueblo entero vitorea tus hazañas y se inician los preparativos para una gran fiesta en tu honor. 🎉',
+    text: '¡Has vencido al malvado dragón!\n\n Los aldeanos no se lo pueden creer. Al final tú, la jóven discípula del gran guerrero ModBer has dado la talla, demostrando tu valía, valentía y honor.\n\n El pueblo entero vitorea tus hazañas y se inician los preparativos para una gran fiesta en tu honor. 🎉',
   },
   {
     name: 'easter egg',
@@ -118,7 +118,7 @@ const locations = [
     name: 'one punch man',
     'button text': ['REJUGAR?', 'REJUGAR?', 'REJUGAR?'],
     'button functions': [restart, restart, restart],
-    text: '¡Sin experiencia, ni armas, ni vida extra, decides enfrentar al dragón directamente!\n\n El dragón te toma por un necio y comienza a reírse de ti.\n\n El poder de tu maestro ModBer comienza a acumularse alrededor de tu puño y lo descargas contra la cabeza del dragón.\n\n El puñetazo legendario hace que la cabeza del dragón se desintegre y su cuerpo caiga muerto al suelo.\n\n ¡Has vencido al malvado dragón!\n\n Los aldeanos no se lo pueden creer. Al final tú, el jóven discípulo del gran guerrero ModBer has dado la talla, demostrando tu valía, valentía y honor.\n\n El pueblo entero vitorea tus hazañas y se inician los preparativos para una gran fiesta en tu honor. 🎉',
+    text: '¡Sin experiencia, ni armas, ni vida extra, decides enfrentar al dragón directamente!\n\n El dragón te toma por una necia y comienza a reírse de ti.\n\n El poder de tu maestro ModBer comienza a acumularse alrededor de tu puño y lo descargas contra la cabeza del dragón.\n\n El puñetazo legendario hace que la cabeza del dragón se desintegre y su cuerpo caiga muerto al suelo.\n\n ¡Has vencido al malvado dragón!\n\n Los aldeanos no se lo pueden creer. Al final tú, la jóven discípula del gran guerrero ModBer has dado la talla, demostrando tu valía, valentía y honor.\n\n El pueblo entero vitorea tus hazañas y se inician los preparativos para una gran fiesta en tu honor. 🎉',
   },
 ];
 
@@ -219,18 +219,18 @@ function cambiarSrcDeImagen(nuevaUrl) {
   }
 }
 
-/* function cambiarSrcDeImagenArma(nuevaUrl) {
+function cambiarSrcDeImagenArma(nuevaUr2) {
   // Obtener el elemento img por su id
-  var imagen = document.getElementById('fotoArmaActual');
+  var imagenArma = document.getElementById('fotoArmaActual');
 
   // Verificar si el elemento existe
-  if (imagen) {
+  if (imagenArma) {
     // Cambiar la URL del atributo src
-    imagen.src = nuevaUrl;
+    imagenArma.src = nuevaUr2;
   } else {
     console.error('El elemento img no se encontró con el ID proporcionado.');
   }
-} */
+}
 
 /*------------------------------------------------------------------------------------------------------------*/
 
@@ -287,6 +287,18 @@ function buySalud() {
   }
 }
 
+function actualizarFotoDeArma() {
+  if (weapons[currentWeapon].name == 'palo') {
+    cambiarSrcDeImagenArma('Medios/armas/palo.jpeg');
+  } else if (weapons[currentWeapon].name == 'daga') {
+    cambiarSrcDeImagenArma('Medios/armas/daga.jpeg');
+  } else if (weapons[currentWeapon].name == 'martillo') {
+    cambiarSrcDeImagenArma('Medios/armas/martillo.jpeg');
+  } else if (weapons[currentWeapon].name == 'espada') {
+    cambiarSrcDeImagenArma('Medios/armas/espada.jpeg');
+  }
+}
+
 function buyWeapon() {
   if (currentWeapon < weapons.length - 1) {
     if (oro >= 30) {
@@ -300,25 +312,18 @@ function buyWeapon() {
       currentWeaponText.innerText = weapons[currentWeapon].name;
       console.log('currentWeaponText', currentWeaponText);
       numberOfWeaponsText.innerText = inventory.length;
-      /*       if (weapons[currentWeapon].name == 'palo') {
-        cambiarSrcDeImagenArma('/Medios/armas/palo.jpeg');
-      } else if (weapons[currentWeapon].name == 'daga') {
-        cambiarSrcDeImagenArma('/Medios/armas/daga.jpeg');
-      } else if (weapons[currentWeapon].name == 'martillo') {
-        cambiarSrcDeImagenArma('/Medios/armas/martillo.jpeg');
-      } else if (weapons[currentWeapon].name == 'espada') {
-        cambiarSrcDeImagenArma('/Medios/armas/espada.jpeg');
-      } else if (weapons[currentWeapon].name == 'Espada Maestra') {
-        cambiarSrcDeImagenArma('/Medios/estadosylogros/espadamaestra.jpeg');
-      } */
+      console.log('currentWeapon', weapons[currentWeapon].name);
+      actualizarFotoDeArma();
     } else {
       text.innerText = 'No tienes suficiente oro para comprar nuevas armas.';
     }
   } else {
-    text.innerText = 'Has adquirido el arma más poderosa!';
+    text.innerText =
+      'No puedes comprar más armas.\n\n Ya has adquirido el arma más poderosa del tendero!\n\n Pero puedes vender armas para ganar dinero.';
     button2.innerText = 'Vender arma por 15 de oro';
     button2.onclick = sellWeapon;
   }
+  console.log('armas', inventory.length);
 }
 
 function sellWeapon() {
@@ -342,13 +347,24 @@ function sellWeapon() {
         ' !MILAGRO!\n\n Tu espada ha comenzado a brillar y se ha vuelto indestructible.\n\n Cuenta la leyenda que se trata de la auténtica Espada Maestra.';
       currentWeaponText.innerText = 'Espada Maestra';
       currentWeaponText.style.color = 'blue';
-      unlockAchievements('logro3'); // Llamamos a la función para desbloquear el logro 3
 
+      unlockAchievements('logro3'); // Llamamos a la función para desbloquear el logro 3
+      const siTienesLogroEspadaMaestra = document.getElementById('logro3');
+      console.log('siTienesLogroEspadaMaestra', siTienesLogroEspadaMaestra);
+      // Ponemos la foto de la espada maestra
+      if (
+        weapons[currentWeapon].name == 'espada' &&
+        siTienesLogroEspadaMaestra.classList.contains('show') &&
+        inventory.length == '1'
+      ) {
+        cambiarSrcDeImagenArma('Medios/estadosylogros/espadamaestra.jpeg');
+      }
       verificarLogrosDesbloqueados();
     }
   } else {
     text.innerText = 'No puedes vender tu única arma!';
   }
+  console.log('armas', inventory.length);
 }
 
 function ifYouAreRich() {
@@ -590,6 +606,7 @@ function restart() {
   goldText.innerText = oro;
   healthText.innerText = salud;
   xpText.innerText = xp;
+  cambiarSrcDeImagenArma('Medios/armas/palo.jpeg');
   goTown();
 }
 
@@ -599,7 +616,7 @@ function restart() {
 function alternativeWinGame() {
   mostrarPopup(
     '/Medios/estadosylogros/onepunchman.jpeg',
-    `LOGRO DESBLOQUEADO\n\n <br> Enhorabuena, te has bajado al dragón con un buen puñetazo al estilo Saitama. ¡Eres un auténtico bestia!\n\n (Revisa tu lista de logros en la parte inferior del juego).`
+    `LOGRO DESBLOQUEADO\n\n <br> Enhorabuena, te has bajado al dragón con un buen puñetazo al estilo Saitama. ¡Eres una auténtica bestia!\n\n (Revisa tu lista de logros en la parte inferior del juego).`
   );
   cambiarSrcDeImagen('/Medios/estadosylogros/onepunchman.jpeg');
   update(locations[8]);
@@ -642,7 +659,7 @@ function pick(guess) {
   }
   if (numbers.includes(guess)) {
     text.innerText +=
-      '¡Correcto!\n Has demostrado que eres el elegido y el aldeano te ha dado 20 monedas de oro!';
+      '¡Correcto!\n Has demostrado que eres la elegida y el aldeano te ha dado 20 monedas de oro!';
     oro += 20;
     goldText.innerText = oro;
     if (oro >= 500) {
@@ -676,8 +693,8 @@ function verificarLogrosDesbloqueados() {
   if (todosDesbloqueados) {
     console.log('¡Todos los logros están desbloqueados!');
     mostrarPopup(
-      '/Medios/estadosylogros/espadamaestra.jpeg',
-      `ENHORABUENA ADRI\n\n HAS SUPERADO EL JUEGO CAZADOR DE DRAGONES.\n\n Apunta las palabras secretas y dáselas a Jose para obtener tus tan ansiadas pistas.`
+      '/Medios/estadosylogros/wingame.jpg',
+      `ENHORABUENA NERE\n\n HAS SUPERADO EL JUEGO CAZADOR DE DRAGONES.\n\n Apunta las palabras secretas y dáselas a Jose para obtener tus tan ansiadas pistas.`
     );
   } else {
     console.log('Aún no has desbloqueado todos los logros.');
