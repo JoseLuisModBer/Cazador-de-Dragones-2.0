@@ -6,7 +6,7 @@ verificarLogrosDesbloqueados();
 
 let xp = 0;
 let salud = 100;
-let oro = 459;
+let oro = 9;
 let currentWeapon = 0;
 let fighting;
 let monsterSalud;
