@@ -52,7 +52,7 @@ button {
 *************/
 
 #logo-cazador-de-dragones {
-  width: 50%;
+  width: 40%;
 }
 
 /************************
@@ -185,7 +185,7 @@ main {
 }
 
 #fotoArmaActual {
-  width: 30%;
+  width: 15%;
   margin-left: 20px;
 }
 
@@ -330,7 +330,7 @@ footer > p > a {
   }
 
   #fotoArmaActual {
-    width: 30%;
+    width: 20%;
     margin-left: 0px;
   }
 }
@@ -359,16 +359,16 @@ footer > p > a {
   h2 {
     font-size: 20px;
   }
+
+  #fotoArmaActual {
+    width: 100px;
+  }
 }
 
 @media (max-width: 700px) {
   #game,
   #logrosDesbloqueados {
     width: 500px;
-  }
-
-  #fotoArmaActual {
-    width: 100px;
   }
 }
 
@@ -395,10 +395,6 @@ footer > p > a {
     flex-direction: column;
     gap: 1rem;
   }
-
-  #fotoArmaActual {
-    width: 100%;
-  }
 }
 
 @media (max-width: 500px) {
@@ -414,7 +410,7 @@ footer > p > a {
 
 @media (max-width: 400px) {
   #logo-cazador-de-dragones {
-    width: 90%;
+    width: 80%;
   }
 
   #game,
@@ -427,7 +423,7 @@ footer > p > a {
   }
 
   #fotoArmaActual {
-    width: 100%;
+    width: 90%;
   }
 }
 

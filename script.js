@@ -1,10 +1,12 @@
+verificarLogrosDesbloqueados();
+
 /*****************
  *** VARIABLES ***
  ****************/
 
 let xp = 0;
 let salud = 100;
-let oro = 9;
+let oro = 459;
 let currentWeapon = 0;
 let fighting;
 let monsterSalud;
@@ -142,7 +144,6 @@ borrarLocalStorageButton.onclick = borrarLocalStorage;
 loadAchievements();
 function loadAchievements() {
   const achievements = JSON.parse(localStorage.getItem('achievements')) || {};
-  /*   console.log('achievements', achievements); */
   for (const key in achievements) {
     if (achievements.hasOwnProperty(key) && achievements[key]) {
       const logroElement = document.getElementById(key);
@@ -161,7 +162,7 @@ function loadAchievements() {
 // Desbloquear logros y mostrarlos en la interfaz
 function unlockAchievements(logroId) {
   const logroElement = document.getElementById(logroId);
-  console.log('logroElement', logroElement);
+
   if (logroElement) {
     logroElement.classList.remove('doNotShow'); // Retiramos la clase que evita que se muestre el logro.
     logroElement.classList.add('show'); // Agregamos la clase para mostrar el logro
@@ -310,9 +311,8 @@ function buyWeapon() {
       inventory.push(newWeapon);
       text.innerText += ' En tu inventario tienes: ' + inventory;
       currentWeaponText.innerText = weapons[currentWeapon].name;
-      console.log('currentWeaponText', currentWeaponText);
       numberOfWeaponsText.innerText = inventory.length;
-      console.log('currentWeapon', weapons[currentWeapon].name);
+      console.log('Arma actual', weapons[currentWeapon].name);
       actualizarFotoDeArma();
     } else {
       text.innerText = 'No tienes suficiente oro para comprar nuevas armas.';
@@ -323,7 +323,7 @@ function buyWeapon() {
     button2.innerText = 'Vender arma por 15 de oro';
     button2.onclick = sellWeapon;
   }
-  console.log('armas', inventory.length);
+  console.log('Número de armas', inventory.length);
 }
 
 function sellWeapon() {
@@ -350,7 +350,7 @@ function sellWeapon() {
 
       unlockAchievements('logro3'); // Llamamos a la función para desbloquear el logro 3
       const siTienesLogroEspadaMaestra = document.getElementById('logro3');
-      console.log('siTienesLogroEspadaMaestra', siTienesLogroEspadaMaestra);
+
       // Ponemos la foto de la espada maestra
       if (
         weapons[currentWeapon].name == 'espada' &&
@@ -364,17 +364,22 @@ function sellWeapon() {
   } else {
     text.innerText = 'No puedes vender tu única arma!';
   }
-  console.log('armas', inventory.length);
+  console.log('Número de armas', inventory.length);
 }
 
 function ifYouAreRich() {
-  mostrarPopup(
-    '/Medios/estadosylogros/dinero.jpeg',
-    `LOGRO DESBLOQUEADO\n\n Has conseguido más de 500 monedas de oro.\n\n (Revisa tu lista de logros en la parte inferior del juego).`
-  );
-  unlockAchievements('logro2'); // Llamamos a la función para desbloquear el logro 2
-
-  verificarLogrosDesbloqueados();
+  const siTienesLogroDinero = document.getElementById('logro2');
+  // Ponemos la foto de la espada maestra
+  if (siTienesLogroDinero.classList.contains('show')) {
+    return;
+  } else {
+    mostrarPopup(
+      '/Medios/estadosylogros/dinero.jpeg',
+      `LOGRO DESBLOQUEADO\n\n Has conseguido más de 500 monedas de oro.\n\n (Revisa tu lista de logros en la parte inferior del juego).`
+    );
+    unlockAchievements('logro2'); // Llamamos a la función para desbloquear el logro 2
+    verificarLogrosDesbloqueados();
+  }
 }
 
 function fightSlime() {
@@ -454,16 +459,19 @@ function playerAttack() {
             '/Medios/armas/daga-rota.jpg',
             `Tu ${armaRota} se ha roto.`
           );
+          cambiarSrcDeImagenArma('Medios/armas/palo.jpeg');
         } else if (armaRota == 'martillo') {
           mostrarPopup(
             '/Medios/armas/martillo-roto.jpg',
             `Tu ${armaRota} se ha roto.`
           );
+          cambiarSrcDeImagenArma('Medios/armas/daga.jpeg');
         } else if (armaRota == 'espada') {
           mostrarPopup(
             '/Medios/armas/espada-rota.jpg',
             `Tu ${armaRota} se ha roto.`
           );
+          cambiarSrcDeImagenArma('Medios/armas/martillo.jpeg');
         }
         text.innerText += ' Tu ' + inventory.pop() + ' se ha roto.';
         currentWeapon--;
@@ -509,16 +517,19 @@ function playerDodge() {
             '/Medios/armas/daga-rota.jpg',
             `Tu ${armaRota} se ha roto.`
           );
+          cambiarSrcDeImagenArma('Medios/armas/palo.jpeg');
         } else if (armaRota == 'martillo') {
           mostrarPopup(
             '/Medios/armas/martillo-roto.jpg',
             `Tu ${armaRota} se ha roto.`
           );
+          cambiarSrcDeImagenArma('Medios/armas/daga.jpeg');
         } else if (armaRota == 'espada') {
           mostrarPopup(
             '/Medios/armas/espada-rota.jpg',
             `Tu ${armaRota} se ha roto.`
           );
+          cambiarSrcDeImagenArma('Medios/armas/martillo.jpeg');
         }
         text.innerText += ' Tu ' + inventory.pop() + ' se ha roto.';
         currentWeapon--;
@@ -557,7 +568,7 @@ function playerDodge() {
 /*El daño que te hace el monstruo el resultado de multiplicar el nivel del enemigo * 5 y restarle el resultado de multiplicar un número aleatorio entre 0 y 1 por tu xp. Es decir, cuanto más nivel tenga más te quita pero cuanto más nivel tengas tú más reduces el daño que te hace. */
 function getMonsterAttackValue(level) {
   const hit = level * 5 - Math.floor(Math.random() * xp);
-  console.log('hit', hit);
+  console.log('Daño de atque del monstruo', hit);
   return hit > 0 ? hit : 0;
 }
 
@@ -689,7 +700,6 @@ function verificarLogrosDesbloqueados() {
   );
 
   // Retorna el resultado
-  console.log('Tienestodosloslogros', todosDesbloqueados);
   if (todosDesbloqueados) {
     console.log('¡Todos los logros están desbloqueados!');
     mostrarPopup(
@@ -697,6 +707,6 @@ function verificarLogrosDesbloqueados() {
       `ENHORABUENA NERE\n\n HAS SUPERADO EL JUEGO CAZADOR DE DRAGONES.\n\n Apunta las palabras secretas y dáselas a Jose para obtener tus tan ansiadas pistas.`
     );
   } else {
-    console.log('Aún no has desbloqueado todos los logros.');
+    console.log('Aún no has desbloqueado todos los logros, pero sigue así ;).');
   }
 }
