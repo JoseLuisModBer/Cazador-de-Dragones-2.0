@@ -640,6 +640,13 @@ function restart() {
   goldText.innerText = oro;
   healthText.innerText = salud;
   xpText.innerText = xp;
+
+  currentWeapon = 0;
+  inventory = ['palo'];
+
+  currentWeaponText.innerText = weapons[currentWeapon].name;
+  numberOfWeaponsText.innerText = inventory.length;
+
   reiniciarSaludMonstruos();
   cambiarSrcDeImagenArma('Medios/armas/palo.jpeg');
   goTown();
@@ -651,7 +658,7 @@ function restart() {
 function alternativeWinGame() {
   mostrarPopup(
     '/Medios/estadosylogros/onepunchman.jpeg',
-    `LOGRO DESBLOQUEADO\n\n <br> Enhorabuena, te has bajado al dragón con un buen puñetazo al estilo Saitama. ¡Eres una auténtica bestia!\n\n (Revisa tu lista de logros en la parte inferior del juego).`
+    `LOGRO DESBLOQUEADO\n\n Enhorabuena, te has bajado al dragón con un buen puñetazo al estilo Saitama. ¡Eres una auténtica bestia!\n\n (Revisa tu lista de logros en la parte inferior del juego).`
   );
   cambiarSrcDeImagen('/Medios/estadosylogros/onepunchman.jpeg');
   update(locations[8]);
