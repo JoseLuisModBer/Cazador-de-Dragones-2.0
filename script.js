@@ -345,7 +345,7 @@ function sellWeapon() {
       );
       text.innerText +=
         ' !MILAGRO!\n\n Tu espada ha comenzado a brillar y se ha vuelto indestructible.\n\n Cuenta la leyenda que se trata de la auténtica Espada Maestra.';
-      currentWeaponText.innerText = 'Espada Maestra';
+      currentWeaponText.innerText = 'Master Sword';
       currentWeaponText.style.color = 'blue';
 
       unlockAchievements('logro3'); // Llamamos a la función para desbloquear el logro 3
@@ -702,10 +702,11 @@ function verificarLogrosDesbloqueados() {
   // Retorna el resultado
   if (todosDesbloqueados) {
     console.log('¡Todos los logros están desbloqueados!');
-    mostrarPopup(
+    /*     mostrarPopup(
       '/Medios/estadosylogros/wingame.jpg',
       `ENHORABUENA NERE\n\n HAS SUPERADO EL JUEGO CAZADOR DE DRAGONES.\n\n Apunta las palabras secretas y dáselas a Jose para obtener tus tan ansiadas pistas.`
-    );
+    ); */
+    window.location.href = 'wingame.html';
   } else {
     console.log('Aún no has desbloqueado todos los logros, pero sigue así ;).');
   }

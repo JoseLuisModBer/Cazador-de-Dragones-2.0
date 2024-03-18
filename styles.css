@@ -300,6 +300,44 @@ footer > p > a {
 /*#####################################################################*/
 
 /*
+#############
+## WINGAME ##
+#############
+*/
+
+#win-game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+#win-game-container img {
+  width: 50%;
+  margin-bottom: 1rem;
+}
+
+#win-game-container h1,
+h2,
+li,
+p {
+  color: #000;
+}
+
+#win-game-container h1,
+h2,
+p {
+  text-align: center;
+}
+
+#win-game-container > ul {
+  margin-bottom: 2rem;
+  padding-left: 20px !important;
+}
+
+/*#####################################################################*/
+
+/*
 #############################
 #### MEDIA QUERY: 700px #####
 #############################
