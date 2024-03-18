@@ -700,14 +700,19 @@ function verificarLogrosDesbloqueados() {
   );
 
   // Retorna el resultado
-  if (todosDesbloqueados) {
-    console.log('¡Todos los logros están desbloqueados!');
-    /*     mostrarPopup(
-      '/Medios/estadosylogros/wingame.jpg',
-      `ENHORABUENA NERE\n\n HAS SUPERADO EL JUEGO CAZADOR DE DRAGONES.\n\n Apunta las palabras secretas y dáselas a Jose para obtener tus tan ansiadas pistas.`
-    ); */
-    window.location.href = 'wingame.html';
-  } else {
-    console.log('Aún no has desbloqueado todos los logros, pero sigue así ;).');
+  if (!window.location.href.includes('wingame.html')) {
+    if (todosDesbloqueados) {
+      console.log('¡Todos los logros están desbloqueados!');
+      //Borramos los logros
+      localStorage.removeItem('achievements');
+      logrosDesbloqueados.classList.remove('show');
+      logrosDesbloqueados.classList.add('doNotShow');
+      // Redirigimos a la página winGame
+      window.location.href = './wingame.html';
+    } else {
+      console.log(
+        'Aún no has desbloqueado todos los logros, pero sigue así ;).'
+      );
+    }
   }
 }
