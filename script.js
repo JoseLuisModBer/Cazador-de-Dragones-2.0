@@ -634,7 +634,7 @@ function winGame() {
 function restart() {
   xp = 0;
   salud = 100;
-  oro = 50;
+  oro = 9;
   currentWeapon = 0;
   inventory = ['palo'];
   goldText.innerText = oro;
