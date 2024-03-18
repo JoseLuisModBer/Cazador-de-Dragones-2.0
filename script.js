@@ -429,8 +429,7 @@ function monsterAttack() {
   button3.onclick = goTown;
 }
 
-// Función para calcular la salud actualizada de los monstruos
-function calcularSaludMonstruos() {
+function recalcularSaludMonstruos() {
   // Factor de aumento de salud basado en la experiencia del jugador
   const factorAumentoSalud = xp * 0.1; // Por ejemplo, aumenta un 10% por cada 10 de experiencia
 
