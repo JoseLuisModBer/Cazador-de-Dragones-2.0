@@ -445,6 +445,12 @@ function recalcularSaludMonstruos() {
   });
 }
 
+function reiniciarSaludMonstruos() {
+  monsters[0].salud = 15;
+  monsters[1].salud = 60;
+  monsters[2].salud = 300;
+}
+
 function playerAttack() {
   // Calcular daño del monstruo
   const monsterHit = getMonsterAttackValue(monsters[fighting].level);
@@ -634,7 +640,7 @@ function restart() {
   goldText.innerText = oro;
   healthText.innerText = salud;
   xpText.innerText = xp;
-  recalcularSaludMonstruos();
+  reiniciarSaludMonstruos();
   cambiarSrcDeImagenArma('Medios/armas/palo.jpeg');
   goTown();
 }
