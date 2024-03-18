@@ -436,7 +436,9 @@ function recalcularSaludMonstruos() {
   // Recorremos el arreglo de monstruos y actualizamos su salud
   monsters.forEach((monster) => {
     // Calculamos la nueva salud del monstruo basada en su nivel y el factor de aumento
-    const nuevaSalud = monster.salud + monster.level * factorAumentoSalud;
+    const nuevaSalud = Math.floor(
+      monster.salud + monster.level * factorAumentoSalud
+    );
 
     // Actualizamos la salud del monstruo en el arreglo original
     monster.salud = nuevaSalud;
