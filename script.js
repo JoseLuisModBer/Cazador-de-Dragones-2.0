@@ -429,6 +429,21 @@ function monsterAttack() {
   button3.onclick = goTown;
 }
 
+// Función para calcular la salud actualizada de los monstruos
+function calcularSaludMonstruos() {
+  // Factor de aumento de salud basado en la experiencia del jugador
+  const factorAumentoSalud = xp * 0.1; // Por ejemplo, aumenta un 10% por cada 10 de experiencia
+
+  // Recorremos el arreglo de monstruos y actualizamos su salud
+  monsters.forEach((monster) => {
+    // Calculamos la nueva salud del monstruo basada en su nivel y el factor de aumento
+    const nuevaSalud = monster.salud + monster.level * factorAumentoSalud;
+
+    // Actualizamos la salud del monstruo en el arreglo original
+    monster.salud = nuevaSalud;
+  });
+}
+
 function playerAttack() {
   // Calcular daño del monstruo
   const monsterHit = getMonsterAttackValue(monsters[fighting].level);
@@ -589,6 +604,7 @@ function defeatMonster() {
   xp += monsters[fighting].level;
   goldText.innerText = oro;
   xpText.innerText = xp;
+  recalcularSaludMonstruos();
   update(locations[4]);
 }
 
@@ -617,6 +633,7 @@ function restart() {
   goldText.innerText = oro;
   healthText.innerText = salud;
   xpText.innerText = xp;
+  recalcularSaludMonstruos();
   cambiarSrcDeImagenArma('Medios/armas/palo.jpeg');
   goTown();
 }
